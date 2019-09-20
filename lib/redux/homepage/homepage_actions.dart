@@ -1,13 +1,5 @@
 import 'package:redux_oab/models/movie_result.dart';
 
-class BusyAction {
-  final bool isBusy;
-
-  BusyAction({
-    this.isBusy,
-  });
-}
-
 class LoadHomePageMoviesAction {
   final int pageIndex;
 
@@ -16,10 +8,10 @@ class LoadHomePageMoviesAction {
   });
 }
 
-class ReceiveHomePageMoviesAction {
+class HomePageMoviesLoadedAction {
   final List<MovieResult> movies;
 
-  ReceiveHomePageMoviesAction({
+  HomePageMoviesLoadedAction({
     this.movies,
   });
 }
