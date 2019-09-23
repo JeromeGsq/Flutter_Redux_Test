@@ -9,8 +9,8 @@ MovieDetailsState movieDetailsReducer(MovieDetailsState state, dynamic action) {
     );
   }
 
-  if (action is LoadMovieAction) {
-    //return MovieDetailsState(isBusy: false, descriptionIsCollapsed: true, movieResult: state.movieResult);
+  if (action is ClearMovieDetails) {
+    return MovieDetailsState(isBusy: false, descriptionIsCollapsed: true);
   }
 
   if (action is AssignMovieResultAction) {

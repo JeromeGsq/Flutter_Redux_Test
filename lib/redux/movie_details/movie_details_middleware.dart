@@ -13,6 +13,7 @@ class MovieDetailsMiddleware extends MiddlewareClass<AppState> {
 
       // TODO: don't do that
       var movie = await ApiClient().getMovie(action.id);
+      await Future.delayed(Duration(seconds: 1));
       store.dispatch(MovieLoadedAction(movie: movie));
       store.dispatch(BusyAction(isBusy: false));
     }
@@ -22,7 +23,7 @@ class MovieDetailsMiddleware extends MiddlewareClass<AppState> {
 
       // TODO: don't do that
       var movie = await ApiClient().getMovie(action.id, fullDescription: true);
-      await Future.delayed(Duration(seconds: 2));
+      await Future.delayed(Duration(seconds: 1));
       store.dispatch(FullDescriptionLoadedAction(fullDescription: movie.plot));
       store.dispatch(BusyAction(isBusy: false));
     }

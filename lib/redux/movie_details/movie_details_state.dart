@@ -7,7 +7,7 @@ class MovieDetailsState {
   MovieDetailsState({
     @required this.isBusy,
     @required this.descriptionIsCollapsed,
-    @required this.movieResult,
+    this.movieResult,
     this.movie,
     this.fullDescription,
   });

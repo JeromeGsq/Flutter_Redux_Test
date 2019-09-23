@@ -17,9 +17,14 @@ class HomepageMovieCell extends StatelessWidget {
       color: Colors.blueGrey[50],
       onPressed: () {
         // Just need a state to dispatch action
-        var appState = StoreProvider.of<AppState>(context);
-        appState.dispatch(
-            NavigateToAction.push("/movie_details", arguments: movieResult));
+        var store = StoreProvider.of<AppState>(context);
+        store.dispatch(
+          NavigateToAction.push(
+            "/movie_details",
+            preNavigation: () => store.dispatch(ClearMovieDetails()),
+            arguments: movieResult,
+          ),
+        );
       },
       child: Row(
         children: <Widget>[

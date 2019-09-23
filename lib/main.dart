@@ -11,13 +11,11 @@ import 'package:redux_oab/redux/homepage/homepage_middleware.dart';
 import 'package:redux_oab/redux/movie_details/movie_details_middleware.dart';
 
 void main() {
-  final store = Store<AppState>(appStoreReducer,
-      initialState: AppState.initial(),
-      middleware: <Middleware<AppState>>[
-        HomepageMiddleware(),
-        MovieDetailsMiddleware(),
-        NavigationMiddleware<AppState>(),
-      ]);
+  final store = Store<AppState>(appStoreReducer, initialState: AppState.initial(), middleware: <Middleware<AppState>>[
+    HomepageMiddleware(),
+    MovieDetailsMiddleware(),
+    NavigationMiddleware<AppState>(),
+  ]);
 
   runApp(FlutterReduxApp(
     title: 'Flutter Redux OAB Demo',
@@ -45,6 +43,7 @@ class _FlutterReduxAppState extends State<FlutterReduxApp> {
         title: widget.title,
         navigatorKey: NavigatorHolder.navigatorKey,
         onGenerateRoute: _getRoute,
+        debugShowCheckedModeBanner: false,
         home: const HomePage(),
       ),
     );

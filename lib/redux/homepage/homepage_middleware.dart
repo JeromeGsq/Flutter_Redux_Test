@@ -12,6 +12,7 @@ class HomepageMiddleware extends MiddlewareClass<AppState> {
 
       // TODO: don't do that
       var movies = await ApiClient().getHomePageMovies(action.pageIndex);
+      await Future.delayed(Duration(seconds: 1));
       store.dispatch(HomePageMoviesLoadedAction(movies: movies));
       store.dispatch(IncrementCurrentPage());
       store.dispatch(BusyAction(isBusy: false));
