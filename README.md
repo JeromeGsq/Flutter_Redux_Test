@@ -31,3 +31,6 @@ Pro/Cons
 > Avant de naviguer sur l'écran détails d'un film, il faut reseter le contenu du `movie_details_state.dart` sinon l'écran affichera l'ancien contenu le temps de recevoir les nouvelles informations du webservice.
 
 • Design pattern complexe pour un junior.
+
+
+https://www.didierboelens.com/fr/2019/04/bloc---scopedmodel---redux---comparaison/
