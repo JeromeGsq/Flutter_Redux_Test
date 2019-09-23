@@ -23,7 +23,7 @@ Pro/Cons
 * reducer : `movie_details_reducer.dart`
 * middleware : `movie_details_middleware.dart`
 
-• C'est lourd de devoir englober notre widget dans un **StoreConnector** à chaque fois (comme **ScopedModel**).
+• C'est lourd de devoir englober notre widget dans un **StoreConnector** à chaque fois (comme **ScopedModel**).
 
 • Il faut créer beaucoup d'actions.
 
