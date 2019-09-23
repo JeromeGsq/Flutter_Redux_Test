@@ -32,5 +32,9 @@ Pro/Cons
 
 • Design pattern complexe pour un junior.
 
+• On doit re créer un **State** à chaque modifications.
+
+• Accès et modifications très facile grâce aux **States**. Une seule source de données pour tous.
+
 
 https://www.didierboelens.com/fr/2019/04/bloc---scopedmodel---redux---comparaison/
