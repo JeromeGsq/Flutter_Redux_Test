@@ -6,13 +6,12 @@ Flutter Redux
 
 • **StoreConnector** - A descendant Widget that gets the Store from the nearest StoreProvider ancestor, converts the Store into a ViewModel with the given converter function, and passes the ViewModel to a builder function. Any time the Store emits a change event, the Widget will automatically be rebuilt. No need to manage subscriptions!
 
-Here are the rules for reducers:
+Here are the rules:
 ===============
 
 1. Must return any value besides 'undefined'.
 2. Produces 'state' or data to be used inside of your app using only previous state and the action.
-3. Must not reach outside of itself to decide what value to return.
-Must not mutate its input state argument.
+3. Must not reach outside of itself to decide what value to return. Must not mutate its input state argument.
 
 
 Pro/Cons
