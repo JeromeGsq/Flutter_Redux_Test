@@ -10,6 +10,48 @@ _______________
 > You will find a simplified example of how I use Flutter Redux in this ReadMe.
 _______________
 
+App 
+It has its own `State`, the `Store`. 
+There is only one `Store`.
+
+For App we have : 
+- `action` 
+- `middleware`
+- `reducer` will return us a new `AppState` depending on the `Reducers` of our pages
+- `store` will hold our pages `States`
+
+Foreach pages of our applications we have : 
+- `actions`
+- `middleware`
+- `reducer`
+- `state`
+
+We need to provide `MiddleWares` here : 
+
+```dart
+void main() {
+  final store = Store<AppState>(
+    // Our App reducer 
+    appStoreReducer, 
+    // Initial AppStore
+    initialState: AppStore.initial(), 
+    // Add our Middlewares here
+    middleware: <Middleware<AppState>>[
+        ExamplePageMiddleware(),
+        AnotherPageMiddleware(),
+        ...
+    ]
+  );
+
+  runApp(MyApp(
+    title: 'MyApp',
+    store: store,
+  ));
+}
+```
+
+_______________
+
 • **files and folders**
 ```
 Project
@@ -28,6 +70,8 @@ Project
         +-- anotherpage
             +-- ... 
 ```
+
+
 
 Example Page
 ===============
@@ -117,7 +161,7 @@ ExamplePageState examplePageReducer(ExamplePageState state, dynamic action) {
 
 • **examplepage_state.dart**
 
-
+The state is useful to hold the data.
 
 ```dart
 @immutable
@@ -151,23 +195,27 @@ class ExamplePageState {
 
 App
 ===============
-• **app_actions.dart**
-```dart
-class BusyAction {
-  final bool isBusy;
 
-  BusyAction({
-    this.isBusy,
-  });
-}
+• **app_actions.dart**
+
+App can have Actions. 
+
+```dart
+// Nothing here at the moment
 ```
 
 • **app_middleware.dart**
+
+App can have Middleware too. We do not use it in our case.
+
 ```dart
 // Nothing here at the moment
 ```
 
 • **app_reducer.dart**
+
+This `Reducer` takes care of the other `Reducers`. We don't do treatment here.
+
 ```dart
 AppState appStoreReducer(AppState state, dynamic action) {
   return AppState(
@@ -179,6 +227,9 @@ AppState appStoreReducer(AppState state, dynamic action) {
 ```
 
 • **app_store.dart**
+
+The `Store` contains the other `States` of our application. 
+
 ```dart
 @immutable
 class AppStore {
