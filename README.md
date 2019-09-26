@@ -2,6 +2,7 @@ Flutter Redux
 ===============
 
 **Flutter Redux package**: https://pub.dev/packages/flutter_redux
+
 **Tuto Fr:** https://www.didierboelens.com/fr/2019/04/bloc---scopedmodel---redux---comparaison/
 
 _______________
