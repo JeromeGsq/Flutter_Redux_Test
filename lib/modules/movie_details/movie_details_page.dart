@@ -44,10 +44,6 @@ class _MovieDetailsPageState extends State<MovieDetailsPage> {
     );
   }
 
-  Widget buildLoader(MovieDetailsState movieDetailsState, BuildContext context) {
-    return Center(child: CircularProgressIndicator());
-  }
-
   Widget buildPage(MovieDetailsState movieDetailsState, BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(8.0),
@@ -72,7 +68,7 @@ class _MovieDetailsPageState extends State<MovieDetailsPage> {
                 child: Column(
                   children: <Widget>[
                     Text(
-                      movieDetailsState.descriptionIsCollapsed
+                      movieDetailsState.showFullDescription
                           ? movieDetailsState?.movie?.plot.toString()
                           : movieDetailsState?.fullDescription.toString(),
                       textAlign: TextAlign.start,
@@ -81,7 +77,7 @@ class _MovieDetailsPageState extends State<MovieDetailsPage> {
                     MaterialButton(
                       child: movieDetailsState.isBusy
                           ? CircularProgressIndicator()
-                          : Icon(movieDetailsState.descriptionIsCollapsed
+                          : Icon(movieDetailsState.showFullDescription
                               ? Icons.keyboard_arrow_down
                               : Icons.keyboard_arrow_up),
                       onPressed: () {

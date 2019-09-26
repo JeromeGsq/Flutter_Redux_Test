@@ -6,14 +6,14 @@ import 'package:redux_oab/models/movie_result.dart';
 class MovieDetailsState {
   MovieDetailsState({
     @required this.isBusy,
-    @required this.descriptionIsCollapsed,
+    @required this.showFullDescription,
     this.movieResult,
     this.movie,
     this.fullDescription,
   });
 
   final bool isBusy;
-  final bool descriptionIsCollapsed;
+  final bool showFullDescription;
   final MovieResult movieResult;
   final Movie movie;
   final String fullDescription;
@@ -21,7 +21,7 @@ class MovieDetailsState {
   factory MovieDetailsState.initial() {
     return MovieDetailsState(
       isBusy: false,
-      descriptionIsCollapsed: true,
+      showFullDescription: false,
       movieResult: null,
       movie: null,
       fullDescription: "",
@@ -37,7 +37,7 @@ class MovieDetailsState {
   }) {
     return MovieDetailsState(
       isBusy: isBusy ?? this.isBusy,
-      descriptionIsCollapsed: descriptionIsCollapsed ?? this.descriptionIsCollapsed,
+      showFullDescription: descriptionIsCollapsed ?? this.showFullDescription,
       movieResult: movieResult ?? this.movieResult,
       movie: movie ?? this.movie,
       fullDescription: fullDescription ?? this.fullDescription,

@@ -10,7 +10,7 @@ MovieDetailsState movieDetailsReducer(MovieDetailsState state, dynamic action) {
   }
 
   if (action is ClearMovieDetails) {
-    return MovieDetailsState(isBusy: false, descriptionIsCollapsed: true);
+    return MovieDetailsState(isBusy: false, showFullDescription: true);
   }
 
   if (action is AssignMovieResultAction) {
@@ -34,7 +34,7 @@ MovieDetailsState movieDetailsReducer(MovieDetailsState state, dynamic action) {
 
   if (action is SwitchDescriptionStatus) {
     return state.copyWith(
-      descriptionIsCollapsed: !state.descriptionIsCollapsed,
+      descriptionIsCollapsed: !state.showFullDescription,
     );
   }
 
