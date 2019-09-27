@@ -4,9 +4,9 @@ import 'package:redux_oab/redux/app/app_actions.dart';
 import 'package:redux_oab/redux/app/app_state.dart';
 import 'package:redux_oab/redux/homepage/homepage_actions.dart';
 
-class HomepageMiddleware extends MiddlewareClass<AppState> {
+class HomepageMiddleware extends MiddlewareClass<AppStore> {
   @override
-  Future<Null> call(Store<AppState> store, dynamic action, NextDispatcher next) async {
+  Future<Null> call(Store<AppStore> store, dynamic action, NextDispatcher next) async {
     if (action is LoadHomePageMoviesAction) {
       store.dispatch(BusyAction(isBusy: true));
 

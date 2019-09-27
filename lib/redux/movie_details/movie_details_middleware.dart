@@ -5,9 +5,9 @@ import 'package:redux_oab/redux/app/app_state.dart';
 
 import 'movie_details_actions.dart';
 
-class MovieDetailsMiddleware extends MiddlewareClass<AppState> {
+class MovieDetailsMiddleware extends MiddlewareClass<AppStore> {
   @override
-  Future<Null> call(Store<AppState> store, dynamic action, NextDispatcher next) async {
+  Future<Null> call(Store<AppStore> store, dynamic action, NextDispatcher next) async {
     if (action is LoadMovieAction) {
       store.dispatch(BusyAction(isBusy: true));
 

@@ -3,8 +3,8 @@ import 'package:redux_oab/redux/homepage/homepage_state.dart';
 import 'package:redux_oab/redux/movie_details/movie_details_state.dart';
 
 @immutable
-class AppState {
-  const AppState({
+class AppStore {
+  const AppStore({
     this.homePageState,
     this.movieDetailsState,
   });
@@ -12,8 +12,8 @@ class AppState {
   final HomePageState homePageState;
   final MovieDetailsState movieDetailsState;
 
-  factory AppState.initial() {
-    return AppState(
+  factory AppStore.initial() {
+    return AppStore(
       homePageState: HomePageState.initial(),
       movieDetailsState: MovieDetailsState.initial(),
     );

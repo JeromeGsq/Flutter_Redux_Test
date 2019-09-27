@@ -6,15 +6,14 @@ import 'package:redux_oab/modules/homepage/home_page.dart';
 import 'package:redux_oab/modules/movie_details/movie_details_page.dart';
 import 'package:redux_oab/redux/app/app_reducer.dart';
 import 'package:redux_oab/redux/app/app_state.dart';
-import 'package:redux_oab/redux/homepage/homepage_actions.dart';
 import 'package:redux_oab/redux/homepage/homepage_middleware.dart';
 import 'package:redux_oab/redux/movie_details/movie_details_middleware.dart';
 
 void main() {
-  final store = Store<AppState>(appStoreReducer, initialState: AppState.initial(), middleware: <Middleware<AppState>>[
+  final store = Store<AppStore>(appStoreReducer, initialState: AppStore.initial(), middleware: <Middleware<AppStore>>[
     HomepageMiddleware(),
     MovieDetailsMiddleware(),
-    NavigationMiddleware<AppState>(),
+    NavigationMiddleware<AppStore>(),
   ]);
 
   runApp(FlutterReduxApp(
@@ -24,7 +23,7 @@ void main() {
 }
 
 class FlutterReduxApp extends StatefulWidget {
-  final Store<AppState> store;
+  final Store<AppStore> store;
   final String title;
 
   FlutterReduxApp({Key key, this.store, this.title}) : super(key: key);
@@ -36,7 +35,7 @@ class FlutterReduxApp extends StatefulWidget {
 class _FlutterReduxAppState extends State<FlutterReduxApp> {
   @override
   Widget build(BuildContext context) {
-    return StoreProvider<AppState>(
+    return StoreProvider<AppStore>(
       store: widget.store,
       child: MaterialApp(
         theme: ThemeData.light(),

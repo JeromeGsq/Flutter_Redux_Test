@@ -24,7 +24,7 @@ class MovieDetailsPage extends StatefulWidget {
 class _MovieDetailsPageState extends State<MovieDetailsPage> {
   @override
   Widget build(BuildContext context) {
-    return StoreConnector<AppState, MovieDetailsState>(
+    return StoreConnector<AppStore, MovieDetailsState>(
       onInit: (store) => store.dispatch(
         LoadMovieAction(id: widget.movieResult.imdbID),
       ),
@@ -82,10 +82,10 @@ class _MovieDetailsPageState extends State<MovieDetailsPage> {
                               : Icons.keyboard_arrow_up),
                       onPressed: () {
                         if (movieDetailsState?.fullDescription?.isEmpty ?? true) {
-                          StoreProvider.of<AppState>(context)
+                          StoreProvider.of<AppStore>(context)
                               .dispatch(LoadFullDescriptionAction(id: movieDetailsState?.movie?.imdbID));
                         } else {
-                          StoreProvider.of<AppState>(context).dispatch(SwitchDescriptionStatus());
+                          StoreProvider.of<AppStore>(context).dispatch(SwitchDescriptionStatus());
                         }
                       },
                     )

@@ -22,7 +22,7 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.orange,
-        title: StoreConnector<AppState, HomePageState>(
+        title: StoreConnector<AppStore, HomePageState>(
           onInit: (store) => store?.dispatch(LoadHomePageMoviesAction()),
           converter: (store) => store?.state?.homePageState,
           builder: (context, homePageState) {
@@ -36,7 +36,7 @@ class _HomePageState extends State<HomePage> {
           },
         ),
       ),
-      body: StoreConnector<AppState, HomePageState>(
+      body: StoreConnector<AppStore, HomePageState>(
         converter: (store) => store?.state?.homePageState,
         builder: (context, homePageState) {
           return homePageState?.movies?.isEmpty == true ? LoaderPage() : buildPage(homePageState, context);
@@ -52,7 +52,7 @@ class _HomePageState extends State<HomePage> {
       itemCount: () => homePageState?.movies?.length,
       loadMore: () async {
         if (!homePageState.isBusy ?? false) {
-          StoreProvider.of<AppState>(context).dispatch(
+          StoreProvider.of<AppStore>(context).dispatch(
             LoadHomePageMoviesAction(
               pageIndex: homePageState?.nextPageIndex,
             ),

@@ -17,7 +17,7 @@ class HomepageMovieCell extends StatelessWidget {
       color: Colors.blueGrey[50],
       onPressed: () {
         // Just need a state to dispatch action
-        var store = StoreProvider.of<AppState>(context);
+        var store = StoreProvider.of<AppStore>(context);
         store.dispatch(
           NavigateToAction.push(
             "/movie_details",
