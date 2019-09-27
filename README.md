@@ -26,6 +26,8 @@ Foreach pages of our applications we have :
 - `reducer`
 - `state`
 
+![Alt Text](https://www.didierboelens.com/images/models_redux_animation.gif)
+
 We need to provide `MiddleWares` here : 
 
 ```dart
