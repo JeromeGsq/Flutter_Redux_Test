@@ -2,11 +2,56 @@ Flutter Redux
 ===============
 
 **Flutter Redux package**: https://pub.dev/packages/flutter_redux
+
 **Tuto Fr:** https://www.didierboelens.com/fr/2019/04/bloc---scopedmodel---redux---comparaison/
 
 _______________
 > This ReadMe does not reflect the classes and screens used in this repository.
 > You will find a simplified example of how I use Flutter Redux in this ReadMe.
+_______________
+
+App 
+It has its own `State`, the `Store`. 
+There is only one `Store`.
+
+For App we have : 
+- `action` 
+- `middleware`
+- `reducer` will return us a new `AppState` depending on the `Reducers` of our pages
+- `store` will hold our pages `States`
+
+Foreach pages of our applications we have : 
+- `actions`
+- `middleware`
+- `reducer`
+- `state`
+
+![Alt Text](https://www.didierboelens.com/images/models_redux_animation.gif)
+
+We need to provide `MiddleWares` here : 
+
+```dart
+void main() {
+  final store = Store<AppState>(
+    // Our App reducer 
+    appStoreReducer, 
+    // Initial AppStore
+    initialState: AppStore.initial(), 
+    // Add our Middlewares here
+    middleware: <Middleware<AppState>>[
+        ExamplePageMiddleware(),
+        AnotherPageMiddleware(),
+        ...
+    ]
+  );
+
+  runApp(MyApp(
+    title: 'MyApp',
+    store: store,
+  ));
+}
+```
+
 _______________
 
 • **files and folders**
@@ -27,6 +72,8 @@ Project
         +-- anotherpage
             +-- ... 
 ```
+
+
 
 Example Page
 ===============
@@ -116,7 +163,7 @@ ExamplePageState examplePageReducer(ExamplePageState state, dynamic action) {
 
 • **examplepage_state.dart**
 
-
+The state is useful to hold the data.
 
 ```dart
 @immutable
@@ -150,23 +197,27 @@ class ExamplePageState {
 
 App
 ===============
-• **app_actions.dart**
-```dart
-class BusyAction {
-  final bool isBusy;
 
-  BusyAction({
-    this.isBusy,
-  });
-}
+• **app_actions.dart**
+
+App can have Actions. 
+
+```dart
+// Nothing here at the moment
 ```
 
 • **app_middleware.dart**
+
+App can have Middleware too. We do not use it in our case.
+
 ```dart
 // Nothing here at the moment
 ```
 
 • **app_reducer.dart**
+
+This `Reducer` takes care of the other `Reducers`. We don't do treatment here.
+
 ```dart
 AppState appStoreReducer(AppState state, dynamic action) {
   return AppState(
@@ -178,6 +229,9 @@ AppState appStoreReducer(AppState state, dynamic action) {
 ```
 
 • **app_store.dart**
+
+The `Store` contains the other `States` of our application. 
+
 ```dart
 @immutable
 class AppStore {
@@ -220,24 +274,20 @@ Must not mutate its input state argument.
 
 Pro/Cons
 ===============
-• Dans mon cas, 4 fichiers nécessaires pour 1 écran :
+• 4 files for one screen:
 * action : `movie_details_action.dart`
 * state : `movie_details_state.dart`
 * reducer : `movie_details_reducer.dart`
 * middleware : `movie_details_middleware.dart`
 
-• C'est lourd de devoir englober notre widget dans un **StoreConnector** à chaque fois (comme **ScopedModel**).
+• It's heavy to have to include our widget in a **StoreConnector** each time (like **ScopedModel**).
 
-• Il faut créer beaucoup d'actions.
+• You have to create a lot of actions.
 
-• Il ne faut pas oublier de reset les **States** quand on navigue dessus afin de ne pas se retrouver avec d'anciennes valeurs.
-> Avant de naviguer sur l'écran détails d'un film, il faut reseter le contenu du `movie_details_state.dart` sinon l'écran affichera l'ancien contenu le temps de recevoir les nouvelles informations du webservice.
+• Do not forget to reset the **States** when navigating on them because i will show old values from the State.
 
-• Design pattern complexe pour un junior.
+• Complex design pattern for a newbie.
 
-• On doit re créer un **State** à chaque modifications.
+• A **State** must be created again with each modification.
 
-• Accès et modifications très facile grâce aux **States**. Une seule source de données pour tous.
-
-
-https://www.didierboelens.com/fr/2019/04/bloc---scopedmodel---redux---comparaison/
+• Very easy access and modifications thanks to the **States**. A single data source for all.
