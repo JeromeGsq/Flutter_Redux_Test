@@ -284,10 +284,10 @@ Pro/Cons
 
 • You have to create a lot of actions.
 
-• Do not forget to reset the **States** when navigating on them because i will show old values from the State.
+• Do not forget to reset the **States** when navigating on them because it will show old values.
 
 • Complex design pattern for a newbie.
 
 • A **State** must be created again with each modification.
 
-• Very easy access and modifications thanks to the **States**. A single data source for all.
+• Easy access and modifications thanks to the **States**. A single data source for all.
