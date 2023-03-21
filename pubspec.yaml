@@ -20,7 +20,7 @@ dependencies:
   flutter:
     sdk: flutter
   flutter_redux: any
-  dio: ^3.0.0
+  dio: ">=3.0.0 <6.0.0"
   incrementally_loading_listview: any
   cached_network_image: any
   flutter_redux_navigation: any
